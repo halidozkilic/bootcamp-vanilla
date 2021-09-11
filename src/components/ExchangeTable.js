@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import exchanges from "../mockData/exchanges";
-
+import { Table } from 'reactstrap';
 function ExchangeTable(){
     const [currency,setCurrency] = useState(exchanges.currencies);
 
