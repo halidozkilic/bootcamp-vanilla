@@ -3,7 +3,8 @@ import React from 'react';
 const Note = ({note}) => {
     return (
         <div>
-            {note}
+            {note.text}
+            <button style={{'margin':8}}>delete</button>
         </div>
     );
 };
