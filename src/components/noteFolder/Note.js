@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Note = ({note}) => {
+const Note = ({note,handleRemove}) => {
     return (
         <div>
             {note.text}
-            <button style={{'margin':8}}>delete</button>
+            <button onClick={() => handleRemove(note.id)} style={{'margin':8}}>delete</button>
         </div>
     );
 };
