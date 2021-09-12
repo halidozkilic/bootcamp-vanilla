@@ -8,6 +8,8 @@ import notes from "./mockData/notes";
 import ReactDOM from 'react-dom'
 import { Route, Switch,BrowserRouter as ReactRouter,useHistory } from "react-router-dom";
 
+export const buttonColorContext = React.createContext("blue");
+
 const App = () => {
 
     const [note,setNote] = useState(notes);
@@ -38,7 +40,10 @@ const App = () => {
         <ReactRouter>
             <Switch>
                 <Route exact path ="/">
-                    <NotePage notes={note} handleRemove={handleRemove} handleAddItem={handleAddItem} />
+                    <buttonColorContext.Provider value="blue">
+                        <NotePage notes={note} handleRemove={handleRemove} handleAddItem={handleAddItem} />
+                    </buttonColorContext.Provider>
+
                 </Route>
                 <Route path ="/notes/:id">
                     <NoteDetail notes={note}/>
