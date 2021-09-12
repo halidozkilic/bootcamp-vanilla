@@ -8,7 +8,7 @@ const NoteList = ({notes,handleRemove}) => {
         <div>
             {notes.map(list => {
                 return (
-                    <Note note={list} handleRemove={handleRemove}   />
+                    <Note key={list.id} note={list} handleRemove={handleRemove}   />
                 )
             })}
         </div>
