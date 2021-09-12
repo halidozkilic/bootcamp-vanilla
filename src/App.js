@@ -3,13 +3,50 @@ import React, { useState } from 'react';
 import Header from "./components/noteFolder/header"
 import NoteList from "./components/noteFolder/NoteList";
 import NotePage from "./pages/NotePage";
+import NoteDetail from "./pages/NoteDetail";
+import notes from "./mockData/notes";
+import ReactDOM from 'react-dom'
+import { Route, Switch,BrowserRouter as ReactRouter,useHistory } from "react-router-dom";
+
 const App = () => {
+
+    const [note,setNote] = useState(notes);
+    const [counter,setCounter]= useState(notes[notes.length-1].id);
+    let arr;
+    let detailedNote;
+
+    const handleAddItem = (e) => {
+        arr=note;
+        let newData = {
+            text:e,
+            id:counter+1
+        }
+        arr.push(newData)
+        setCounter(counter+1);
+        setNote(arr);
+    };
+    const handleRemove = (id) => {
+        arr = notes;
+        let newArr = arr.filter(element => element.id !=id )
+        setNote(newArr);
+    }
 
   return (
     <div className="App">
      {/*<ExchangeTable></ExchangeTable>*/}
         <Header />
-        <NotePage/>
+        <ReactRouter>
+            <Switch>
+                <Route exact path ="/">
+                    <NotePage notes={note} handleRemove={handleRemove} handleAddItem={handleAddItem} />
+                </Route>
+                <Route path ="/notes/:id">
+                    <NoteDetail notes={note}/>
+                </Route>
+            </Switch>
+        </ReactRouter>
+
+
     </div>
   );
 }
