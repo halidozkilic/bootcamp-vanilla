@@ -12,21 +12,18 @@ const NotePage = () => {
 
     const handleAddItem = (e) => {
         arr=note;
-        setCounter(counter+1);
         let newData = {
             text:e,
-            id:counter
+            id:counter+1
         }
         arr.push(newData)
+        setCounter(counter+1);
         setNote(arr);
-
-        console.log(note);
     };
 
     const handleRemove = (id) => {
-        console.log(id);
-        arr = notes;
-       let newArr =   arr.filter(element => element.id !=id )
+       arr = notes;
+       let newArr = arr.filter(element => element.id !=id )
        setNote(newArr);
     }
 
